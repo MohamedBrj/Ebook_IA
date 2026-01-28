@@ -98,7 +98,7 @@ const LandingPage = ({ onUnlock }) => {
               ) : (
                 <Lock className="w-5 h-5 mr-2" />
               )}
-              {isProcessing ? 'Paiement sécurisé...' : 'Accéder à l’eBook - 19€'}
+              {isProcessing ? 'Paiement sécurisé...' : 'Accéder à l’eBook - 29,99€'}
             </button>
             <p className="text-sm text-slate-500 mt-2 sm:mt-0">Accès instantané après paiement</p>
           </div>
@@ -236,7 +236,7 @@ const LandingPage = ({ onUnlock }) => {
             <h2 className="text-3xl font-bold text-white mb-2">Commencez l'automatisation</h2>
             <p className="text-slate-400 mb-8">Accès immédiat et à vie au guide complet.</p>
 
-            <div className="text-5xl font-extrabold text-white mb-2">19€ <span className="text-lg text-slate-500 font-normal line-through">49€</span></div>
+            <div className="text-5xl font-extrabold text-white mb-2">29,99€ <span className="text-lg text-slate-500 font-normal line-through">49,99€</span></div>
             <div className="text-cyan-400 text-sm font-bold uppercase tracking-wide mb-8">Offre de lancement</div>
 
             <button
@@ -281,6 +281,7 @@ const chapters = [
     icon: <BookOpen className="w-5 h-5" />,
     bg: "from-blue-600 to-indigo-600",
     content: [
+      { type: 'image', src: '/illustrations/intro_action_era.png', alt: 'The Era of Action' },
       { type: 'p', text: "Bienvenue dans ce guide pratique. Ce n'est pas un énième livre théorique sur l'intelligence artificielle, mais un manuel de terrain pour comprendre la plus grande rupture technologique de cette décennie : les Agents IA." },
       { type: 'p', text: "Jusqu'à présent, nous utilisions l'IA comme un oracle passif : on posait une question, elle donnait une réponse. C'était l'ère du Chatbot. Mais cette ère est déjà en train de s'effacer." },
       { type: 'strong', text: "Aujourd'hui, nous entrons dans l'ère de l'Agent : une IA capable de percevoir, de raisonner, et surtout... d'agir à votre place." },
@@ -309,6 +310,8 @@ const chapters = [
         ]
       },
       { type: 'quote', text: "En d’autres termes : un agent IA ne se contente pas de répondre, il agit." },
+
+      { type: 'image', src: '/illustrations/ch1_chatbot_vs_agent.png', alt: 'Chatbot vs AI Agent' },
 
       { type: 'h3', text: "La différence fondamentale avec un chatbot" },
       { type: 'strong', text: "Un chatbot classique :" },
@@ -410,6 +413,7 @@ const chapters = [
       },
       { type: 'h3', text: "Pourquoi il existe plusieurs types d’agents IA" },
       { type: 'p', text: "Un agent IA est toujours créé pour un objectif précis. Et selon cet objectif : il peut réagir immédiatement, planifier plusieurs étapes, collaborer avec d’autres agents, ou utiliser un ou plusieurs outils." },
+      { type: 'image', src: '/illustrations/ch2_agent_types.png', alt: 'Types of AI Agents' },
       { type: 'quote', text: "Il n’existe pas de “meilleur” agent universel, seulement le bon type pour le bon usage." },
 
       { type: 'h3', text: "1. Les agents réactifs" },
@@ -583,6 +587,7 @@ const chapters = [
       { type: 'quote', text: "Résultat : gain de temps massif et pipeline constant." },
 
       { type: 'strong', text: "🔹 Analyse de marché" },
+      { type: 'image', src: '/illustrations/ch3_business_growth.png', alt: 'AI Business Growth' },
       { type: 'p', text: "Un agent IA peut collecter des données (concurrents, prix, tendances), analyser les avis clients et produire un rapport structuré." },
       { type: 'strong', text: "Exemple :" },
       { type: 'p', text: "Avant de lancer un produit, l’agent analyse les offres existantes, identifie les faiblesses du marché et propose des opportunités de différenciation." },
@@ -660,6 +665,8 @@ const chapters = [
       { type: 'p', text: "Un agent IA peut sembler complexe… mais en réalité, il repose sur quelques briques fondamentales, bien identifiées." },
       { type: 'p', text: "Comprendre ces briques te permet de : mieux concevoir tes agents, choisir les bons outils, éviter les erreurs d’architecture." },
       { type: 'quote', text: "Tu n’as pas besoin d’être chercheur en IA pour les maîtriser." },
+
+      { type: 'image', src: '/illustrations/ch4_architecture.png', alt: 'AI Agent Architecture' },
 
       { type: 'h3', text: "La structure de base d’un agent IA" },
       { type: 'p', text: "Presque tous les agents IA reposent sur cette architecture :" },
@@ -886,6 +893,7 @@ const chapters = [
     content: [
       { type: 'p', text: "Passons maintenant à la pratique. Créer un agent IA ne commence pas par le code, mais par la clarté. La majorité des échecs viennent d’un objectif mal défini, pas d’un problème technique." },
       { type: 'p', text: "Dans ce chapitre, tu vas apprendre une méthode simple en 4 étapes pour concevoir un agent fonctionnel, utile et évolutif." },
+      { type: 'image', src: '/illustrations/ch6_building_blocks.png', alt: 'Building an AI Agent' },
 
       { type: 'h3', text: "Étape 1 : Définir un objectif clair et unique" },
       { type: 'strong', text: "La règle numéro 1 :" },
@@ -1595,6 +1603,11 @@ const EbookReader = ({ onLogout }) => {
                 if (block.type === 'ul') return <ul key={index} className="space-y-2 my-6 list-none pl-0">{block.items.map((item, i) => <li key={i} className="flex items-start pl-2"><span className="mr-3 mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-500 flex-shrink-0" /><span>{item}</span></li>)}</ul>;
                 if (block.type === 'quote') return <div key={index} className={`my-8 p-6 border-l-4 rounded-r-lg ${currentTheme.quoteBg}`}><p className="font-serif italic text-lg leading-relaxed m-0">"{block.text}"</p></div>;
                 if (block.type === 'strong') return <p key={index} className={`font-bold text-lg my-6 ${currentTheme.strong}`}>{block.text}</p>;
+                if (block.type === 'image') return (
+                  <div key={index} className="my-8 rounded-xl overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-800">
+                    <img src={block.src} alt={block.alt} className="w-full h-auto object-cover hover:scale-105 transition-transform duration-500" />
+                  </div>
+                );
                 return <p key={index} className="leading-relaxed my-4">{block.text}</p>;
               })}
             </div>
