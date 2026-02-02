@@ -37,11 +37,8 @@ const LandingPage = ({ onUnlock }) => {
 
   const handlePayment = () => {
     setIsProcessing(true);
-    // Simulation du délai de traitement Stripe
-    setTimeout(() => {
-      setIsProcessing(false);
-      onUnlock();
-    }, 2000);
+    // Redirection vers le lien de paiement Stripe
+    window.location.href = 'https://buy.stripe.com/28E00j3Kr7ef0pGcedb7y01';
   };
 
   return (
@@ -259,7 +256,7 @@ const LandingPage = ({ onUnlock }) => {
 
             <div className="flex items-center justify-center space-x-2 text-xs text-slate-500">
               <Lock className="w-3 h-3" />
-              <span>Paiement sécurisé via Stripe (Simulation)</span>
+              <span>Paiement sécurisé via Stripe</span>
             </div>
           </div>
         </div>
