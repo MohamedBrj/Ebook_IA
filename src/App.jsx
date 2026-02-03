@@ -37,8 +37,7 @@ const LandingPage = ({ onUnlock }) => {
 
   const handlePayment = () => {
     setIsProcessing(true);
-    // Redirection vers le lien de paiement Stripe
-    window.location.href = 'https://buy.stripe.com/28E00j3Kr7ef0pGcedb7y01';
+    window.location.href = 'https://buy.stripe.com/14A14n5SzeGHfkA7XXb7y02';
   };
 
   return (
@@ -1621,7 +1620,7 @@ const EbookReader = ({ onLogout }) => {
 };
 
 export default function App() {
-  const [hasAccess, setHasAccess] = useState(false);
+  const [hasAccess, setHasAccess] = useState(true);
 
   return hasAccess ? (
     <EbookReader onLogout={() => setHasAccess(false)} />
